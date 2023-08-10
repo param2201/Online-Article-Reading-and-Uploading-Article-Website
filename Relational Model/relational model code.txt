@@ -1,0 +1,76 @@
+table users{
+  user_id int [pk] 
+  name varchar
+  gender varchar
+  email_id varchar
+  age int
+  event_id int [ref: < events.event_id]
+  comp_id int [ref: > competitions.comp_id]
+  status varchar
+}
+
+table articles{
+  article_id int [pk]
+  article_name varcahr
+  author_id int
+  article_description varchar
+  length int 
+}
+
+table roles{
+  role_id int [pk] 
+  role_type varchar
+}
+
+table users_roles{
+  user_id int [ref: > users.user_id]
+  role_id int [ref: > roles.role_id]
+}
+
+table events{
+  event_id int [pk]
+  event_name varchar
+  description varchar
+}
+
+table competitions{
+  comp_id int [pk]
+  comp_name varchar
+}
+
+table helps{
+  questions varchar
+  answers varchar
+}
+
+table glossaries{
+  glossary_id int [pk]
+  hardwords varchar
+  meanings varchar
+}
+
+table contains{
+  article_id int [ref: > articles.article_id]
+  glossary_id int [ref: > glossaries.glossary_id]
+}
+
+table languages{
+  language_id int [pk]
+  language_name varchar
+  link varchar
+}
+
+table libraries{
+  user_id int [ref: > users.user_id]
+  article_id int [ref: > articles.article_id]
+}
+
+
+table replies{
+  replies_id int [pk]
+  user_id int [ref: > users.user_id]
+  article_id int [ref: > articles.article_id] 
+  description varchar
+}
+
+
